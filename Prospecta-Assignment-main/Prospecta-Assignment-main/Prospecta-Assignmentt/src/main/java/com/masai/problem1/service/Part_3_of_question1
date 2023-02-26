@@ -1,0 +1,13 @@
+// ) Question: what are the key things you would consider when creating/consuming an API to ensure that it is secure and reliable?
+
+Ans: 1) I will use the spring security(Authentication , Authorization) for security purpose so that only authenticated
+		person can consume my api.
+		
+	 2) I will handle all the exceptions so that the flow of our application will remain the smooth.
+	 
+	 3) I will use the data validation part so that I can ensure that particular field will can contain
+	 only specifics values. ex: email field must contains @gmail.com.
+	 
+	 4) I will use comments so that others developers can also know that the functionalities of API's. 
+
+
