@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Contact Management</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Contact List</h1>
+        <a class="btn" th:href="@{/contacts/add}">Add Contact</a>
+        <form th:action="@{/contacts/search}" method="get">
+            <label>Search by Name: <input type="text" name="name"/></label>
+            <button type="submit">Search</button>
+        </form>
+        <form th:action="@{/contacts/search}" method="get">
+            <label>Search by Phone Number: <input type="text" name="phoneNumber"/></label>
+            <button type="submit">Search</button>
+        </form>
+        <form th:action="@{/contacts/search}" method="get">
+            <label>Search by Email: <input type="email" name="email"/></label>
+            <button type="submit">Search</button>
+        </form>
+        <a class="btn" th:href="@{/contacts}">Show All Contacts</a>
+        <table>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Actions</th>
+            </tr>
+            <tr th:each="contact : ${contacts}">
+                <td th:text="${contact.firstName}">First Name</td>
+                <td th:text="${contact.lastName}">Last Name</td>
+                <td>
+                    <a class="btn-details" th:href="@{/contacts/details/{id}(id=${contact.id})}">Details</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

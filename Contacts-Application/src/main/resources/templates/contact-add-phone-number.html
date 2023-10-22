@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Contact Management</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Add Phone Number</h1>
+        <form th:object="${phoneNumber}" th:action="@{/contacts/add-phone-number/{id}(id=${contactId})}" method="post">
+            <label>Phone Number: <input type="text" th:field="*{phoneNumber}" required/></label><br/>
+            <button class="btn" type="submit">Add</button>
+        </form>
+        <a class="btn" th:href="@{/contacts/details/{id}(id=${contactId})}">Back to Contact Details</a>
+    </div>
+</body>
+</html>

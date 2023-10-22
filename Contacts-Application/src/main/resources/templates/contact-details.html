@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Contact Details</title>
+</head>
+<body>
+    <h2>Contact Details</h2>
+    <p><strong>First Name:</strong> <span th:text="${contact.firstName}"></span></p>
+    <p><strong>Last Name:</strong> <span th:text="${contact.lastName}"></span></p>
+    <p><strong>Email:</strong> <span th:text="${contact.email}"></span></p>
+
+    <h3>Phone Numbers</h3>
+    <ul>
+        <li th:each="phoneNumber, phoneNumberIndex : ${contact.phoneNumbers}">
+            <span th:text="${phoneNumber}"></span>
+            <form th:action="@{/contacts/delete-phone-number/{id}/{phoneNumber}(id=${contact.id}, phoneNumber=${phoneNumber})}" method="get">
+                <button type="submit">Delete</button>
+            </form>
+        </li>
+    </ul>
+
+    <h3>Add Phone Number</h3>
+    <form th:action="@{/contacts/add-phone-number/{id}(id=${contact.id})}" method="post">
+        <input type="text" name="phoneNumber" placeholder="Enter phone number" />
+        <button type="submit">Add</button>
+    </form> 
+    
+  
+    <h3>Actions</h3>
+    <form th:action="@{/contacts/edit/{id}(id=${contact.id})}" method="get">
+        <button type="submit">Update Contact</button>
+    </form>
+
+    <form th:action="@{/contacts/delete/{id}(id=${contact.id})}" method="post">
+        <button type="submit">Delete Contact</button>
+    </form>
+
+    <a th:href="@{/contacts}">Back to Contacts List</a>
+</body>
+</html>
+
+
+
